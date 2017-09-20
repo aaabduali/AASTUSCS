@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Student Records | AASTUSCS </title>
+    <link rel="stylesheet" th:href="${'/css/dataTables.bootstrap.min.css'}"/>
+    <script th:src="@{'/js/datatables.net/js/jquery.dataTables.min.js'}"></script>
+    <script th:src="@{'/js/datatables.net-bs/js/dataTables.bootstrap.min.js'}"></script>
+   <!-- <script>
+        $(function () {
+            $('#example2').DataTable({
+                'paging'      : true,
+                'lengthChange': true,
+                'searching'   : true,
+                'ordering'    : true,
+                'info'        : true,
+                'autoWidth'   : true
+            })
+        })
+    </script>-->
+
+        <script>
+        $(document).ready( function () {
+            var table = $('#example2').DataTable({
+                "sAjaxSource": "/records/table",
+                "sPaginationType" : 'simple_numbers',
+                "sAjaxDataProp": "",
+                "order": [[ 0, "dsc" ]],
+
+
+
+                "aoColumns": [
+                    { "mData": 'student.studentID' },
+                    { "mData": 'date' },
+                    { "mData": 'issue' },
+                ],
+            });
+
+            $(table).on( 'click', 'tbody tr', function () {
+                window.location.href = $(this).attr('href');
+            } );
+
+        });
+
+
+    </script>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="header">
+        <a th:href="${'/records/form'}" role="button" class="btn btn-primary btn-sm btn-round">New</a>
+    </div>
+    <table id="example2" class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Student ID<span><i class="fa fa-sort" aria-hidden="true"></i></span></th>
+            <th>Date<span><i class="fa fa-sort" aria-hidden="true"></i></span></th>
+            <th>Issue<span><i class="fa fa-sort" aria-hidden="true"></i></span></th>
+
+        </tr>
+        </thead>
+
+    </table>
+
+</div>
+<!-- /.box-body -->
+</body>
+<!-- /.box -->
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <meta charset="UTF-8"/>
+    <title>User Accounts | AASTUSCS </title>
+    <link rel="stylesheet" th:href="${'/css/dataTables.bootstrap.min.css'}"/>
+    <script th:src="@{'/js/datatables.net/js/jquery.dataTables.min.js'}"></script>
+    <script th:src="@{'/js/datatables.net-bs/js/dataTables.bootstrap.min.js'}"></script>
+   <!-- <script th:src="@{'/js/datatable/users.js'}"></script>-->
+    <script>
+        $(document).ready( function () {
+            var table = $('#example2').DataTable({
+                "sAjaxSource": "/users/table",
+                "sPaginationType" : 'simple_numbers',
+                "sAjaxDataProp": "",
+                "order": [[ 0, "dsc" ]],
+
+
+
+                "aoColumns": [
+                    { "mData": 'firstName' },
+                    { "mData": 'lastName' },
+                    { "mData": 'username' },
+                    { "mData": 'respSector.name' },
+                    { "mData": 'phone' },
+
+                ],
+            });
+
+            $(table).on( 'click', 'tbody tr', function () {
+                window.location.href = $(this).attr('href');
+            } );
+
+        });
+
+    </script>
+   <!-- <script>
+        $(function () {
+            $('#example2').DataTable({
+                'ajax':'/users/table',
+                'paging'      : true,
+                'lengthChange': true,
+                'searching'   : true,
+                'ordering'    : true,
+                'info'        : true,
+                'autoWidth'   : true
+            })
+        })
+    </script>-->
+</head>
+<body>
+<div layout:fragment="content" >
+
+    <div class="header">
+        <a th:href="${'/user/form'}" role="button" class="btn btn-primary btn-sm btn-round">New</a>
+    </div>
+
+    <table id="example2" class="table table-bordered table-hover">
+        <thead>
+        <tr class="info">
+            <th>First Name<span><i class="fa fa-sort" aria-hidden="true"></i></span></th>
+            <th>Last Name<span><i class="fa fa-sort" aria-hidden="true"></i></span></th>
+            <th>Username<span><i class="fa fa-sort" aria-hidden="true"></i></span></th>
+            <th>Office<span><i class="fa fa-sort" aria-hidden="true"></i></span></th>
+            <th>Phone<span><i class="fa fa-sort" aria-hidden="true"></i></span></th>
+        </tr>
+        </thead>
+
+
+    </table>
+
+</div>
+<!-- /.box-body -->
+</body>
+<!-- /.box -->
+</html>
