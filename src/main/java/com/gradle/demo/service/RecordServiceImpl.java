@@ -32,4 +32,9 @@ public class RecordServiceImpl implements RecordService {
     public List<StudentRecord> findByStudent(String student) {
         return recordRepository.findByStudent(student);
     }
+
+    @Override
+    public void delete(Long id) {
+        recordRepository.deleteById(id);
+    }
 }

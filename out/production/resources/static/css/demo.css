@@ -12,7 +12,9 @@
         position: absolute;
     }
 }
-
+.modal-backdrop{
+	display: none;
+}
 .icon-section {
 	margin: 0 0 3em;
 	clear: both;

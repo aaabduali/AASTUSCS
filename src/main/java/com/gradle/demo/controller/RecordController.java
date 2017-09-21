@@ -10,6 +10,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -56,5 +58,13 @@ public class RecordController {
        model.addFlashAttribute("error", "success");
         return "redirect:/records/";
 
+    }
+    @GetMapping("records/delete/{id}")
+    public ModelAndView delete(@PathVariable Long id) {
+        ModelAndView modelAndView=new ModelAndView();
+        modelAndView.addObject("title","Records");
+        modelAndView.setViewName("/records/list");
+        recordService.deleteById(id);
+        return modelAndView;
     }
 }

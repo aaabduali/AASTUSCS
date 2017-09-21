@@ -11,4 +11,5 @@ public interface RecordService {
     public void deleteById(Long id);
     public List<StudentRecord> findAllByRespSector(RespSector respSector);
     public List<StudentRecord> findByStudent(String student);
+    public void delete(Long id);
 }

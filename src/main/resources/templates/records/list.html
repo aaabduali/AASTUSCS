@@ -28,13 +28,29 @@
                 "sPaginationType" : 'simple_numbers',
                 "sAjaxDataProp": "",
                 "order": [[ 0, "dsc" ]],
-
-
-
-                "aoColumns": [
+                 "aoColumns": [
                     { "mData": 'student.studentID' },
                     { "mData": 'date' },
                     { "mData": 'issue' },
+                    { "mRender": function (data, type, row) {
+                        return '<a data-toggle="modal"  data-target="#myModal'+row.id+'"><i class="fa fa-trash"></i></a>' +
+                            '<div class="modal" id="myModal'+row.id+'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">' +
+                            '<div class="modal-dialog" role="document">' +
+                            '<div class="modal-content">' +
+                            '<div class="modal-header">' +
+                            '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+                            '<h4 class="modal-title" id="myModalLabel">Confirm</h4>' +
+                            '</div>' +
+                            '<div class="modal-body">' +
+                            '<p>Are you sure?</p>' +
+                            '</div>' +
+                            '<div class="modal-footer">' +
+                            '<button type="button" class="btn btn-default" data-dismiss="modal">Cancle</button>' +
+                            '<a href="/records/delete/' + row.id+'" class="btn btn-danger" role="button">Delete</a></div>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>'
+                    }}
                 ],
             });
 
@@ -58,7 +74,7 @@
             <th>Student ID<span><i class="fa fa-sort" aria-hidden="true"></i></span></th>
             <th>Date<span><i class="fa fa-sort" aria-hidden="true"></i></span></th>
             <th>Issue<span><i class="fa fa-sort" aria-hidden="true"></i></span></th>
-
+            <th>Action</th>
         </tr>
         </thead>
 
