@@ -37,7 +37,7 @@ public class Users {
     @Column(name="attempt")
     private int attempt;
 
-    @Column(name="boolean")
+    @Column(name="active")
     private boolean isActive;
 
     @Column(name="locked")

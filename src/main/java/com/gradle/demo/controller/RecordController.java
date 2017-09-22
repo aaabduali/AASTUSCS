@@ -32,6 +32,9 @@ public class RecordController {
     {
         ModelAndView modelAndView=new ModelAndView();
         modelAndView.addObject("title","Records");
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Users user=userService.findByUsername(auth.getName());
+        modelAndView.addObject("fullname",user.getFirstName()+" "+user.getLastName());
         modelAndView.setViewName("records/list");
         return modelAndView;
     }
@@ -41,7 +44,9 @@ public class RecordController {
         ModelAndView modelAndView=new ModelAndView();
         modelAndView.addObject("record",new StudentRecord());
         modelAndView.addObject("title","New Records");
-
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Users user=userService.findByUsername(auth.getName());
+        modelAndView.addObject("fullname",user.getFirstName()+" "+user.getLastName());
         modelAndView.setViewName("records/form");
         return modelAndView;
     }
@@ -51,7 +56,6 @@ public class RecordController {
 
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-
         Users user=userService.findByUsername(auth.getName());
         studentRecord.setRespSectors(user.getRespSector());
         recordService.save(studentRecord);
@@ -60,11 +64,8 @@ public class RecordController {
 
     }
     @GetMapping("records/delete/{id}")
-    public ModelAndView delete(@PathVariable Long id) {
-        ModelAndView modelAndView=new ModelAndView();
-        modelAndView.addObject("title","Records");
-        modelAndView.setViewName("/records/list");
+    public String delete(@PathVariable Long id) {
         recordService.deleteById(id);
-        return modelAndView;
-    }
+        return "redirect:/records";
+}
 }

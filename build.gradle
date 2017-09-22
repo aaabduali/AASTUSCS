@@ -9,7 +9,7 @@ buildscript {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 	}
 }
-
+apply plugin: 'war'
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
@@ -17,6 +17,21 @@ apply plugin: 'org.springframework.boot'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
+jar {
+
+	baseName = 'AASTU-SCS'
+	version = '0.0.1'
+}
+
+war {
+	baseName = 'AASTUSCS'
+	version = '0.0.1'
+}
+bootRepackage {
+	mainClass = 'com.gradle.demo.DemoApplication'
+	withJarTask = 'jar'
+	executable = true
+}
 repositories {
 	mavenCentral()
 }

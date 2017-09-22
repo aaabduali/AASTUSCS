@@ -45,13 +45,21 @@
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label>Role</label>
-                                    <input type="text" required="" class="form-control border-input" name="Role" placeholder="Role"/>
+
+                                    <select class="form-control border-input" name="role" required="true">
+                                        <option value="">Select a Role</option>
+                                        <option th:each="operator : ${role}" th:value="${operator.role_id}" th:inline="text">[[${operator.role}]]</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label>Office</label>
-                                    <input required="" type="number" class="form-control border-input" th:field="*{respSector.id}" placeholder="Office"/>
+
+                                    <select class="form-control border-input"  name="respSector" required="true">
+                                        <option value="">Select an Office</option>
+                                        <option th:each="operator : ${resp}" th:value="${operator.id}" th:inline="text">[[${operator.name}]]</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>

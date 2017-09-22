@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <title>500</title>
+
+    <!-- Bootstrap core CSS     -->
+    <link th:href="${'/css/bootstrap.min.css'}" rel="stylesheet" />
+    <!--     Fonts and icons     -->
+    <link th:href="${'/font-awesome-4.6.3/css/font-awesome.min.css'}" rel="stylesheet"/>
+
+    <link th:href="@{'/css/material-style.css'}" rel="stylesheet" media="screen"/>
+
+</head>
+
+<body class="five-zero-zero">
+<div class="five-zero-zero-container">
+    <div class="error-code">500</div>
+    <div class="error-message">Internal Server Error</div>
+    <div class="button-place">
+        <a th:href="@{'/'}" class="btn btn-default btn-lg waves-effect">GO TO HOMEPAGE</a>
+    </div>
+</div>
+
+</body>
+
+</html>
