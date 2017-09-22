@@ -14,19 +14,19 @@ public class ErrorPageController {
     @RequestMapping("/404")
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String notFound() {
-        return "/404";
+        return "error/404";
     }
 
     @RequestMapping("/403")
     @ResponseStatus(HttpStatus.FORBIDDEN)
     public String forbidden() {
-        return "/403";
+        return "error/403";
     }
 
     @RequestMapping("/500")
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public String internalServerError() {
-        return "/500";
+        return "error/500";
     }
 
 }

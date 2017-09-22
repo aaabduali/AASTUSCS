@@ -6,11 +6,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class RequestController {
-    @RequestMapping("/request")
+    @RequestMapping("/check")
     public ModelAndView request()
     {
         ModelAndView modelAndView=new ModelAndView();
-        modelAndView.setViewName("/request");
+        modelAndView.setViewName("/check");
         return modelAndView;
     }
 }
