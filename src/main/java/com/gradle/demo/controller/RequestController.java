@@ -10,7 +10,7 @@ public class RequestController {
     public ModelAndView request()
     {
         ModelAndView modelAndView=new ModelAndView();
-        modelAndView.setViewName("/check");
+        modelAndView.setViewName("check");
         return modelAndView;
     }
 }
